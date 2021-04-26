@@ -1,0 +1,14 @@
+FROM node:15.14.0-buster-slim
+
+WORKDIR /opt
+
+COPY cict-client-public ./
+
+RUN useradd cict && \
+    npm install
+
+EXPOSE 8080
+
+USER cict
+
+CMD ["npm", "run", "dev"]

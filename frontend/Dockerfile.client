@@ -1,0 +1,27 @@
+FROM node:15.14.0-buster-slim as build
+
+WORKDIR /opt
+
+ENV PATH /opt/node_modules/.bin:$PATH
+
+COPY cict-client-public/package.json /opt/package.json
+
+RUN npm install --silent && \
+    npm install @vue/cli -g
+
+COPY cict-client-public /opt
+
+RUN npm run build
+
+
+FROM nginx:1.19.10-alpine
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=build /opt/dist /usr/share/nginx/html
+
+COPY Nginx/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

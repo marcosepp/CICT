@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+  client:
+    build:
+      context: frontend
+      dockerfile: Dockerfile.client.dev
+    depends_on: 
+      - server
+    networks:
+      front:
+        aliases:
+          - client
+    ports:
+      - 80:8080
+    environment:
+      - CICT_CLIENT_API_HOST=server
+      - CICT_CLIENT_API_PORT=3000
+    restart: unless-stopped
+
+  server:
+    build:
+      context: backend
+      dockerfile: Dockerfile.server
+    depends_on: 
+      - db
+    networks:
+      back:
+        aliases:
+          - server
+      front:
+        aliases:
+          - server
+    environment:
+      - CICT_SERVER_MONGO_HOST=db
+      - CICT_SERVER_MONGO_DB=cict
+    restart: unless-stopped
+
+  db:
+    image: mongo:4.4.2-bionic
+    restart: unless-stopped
+    networks:
+      back:
+        aliases:
+          - db
+    volumes:
+      - db-data:/data/db
+
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  front:
+  back:

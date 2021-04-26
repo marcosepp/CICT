@@ -1,0 +1,6 @@
+[submodule "frontend/cict-client-public"]
+	path = frontend/cict-client-public
+	url = git@github.com:ClevenL/cict-client-public.git
+[submodule "backend/cict-server-public"]
+	path = backend/cict-server-public
+	url = git@github.com:ClevenL/cict-server-public.git

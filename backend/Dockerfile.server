@@ -1,0 +1,14 @@
+FROM node:15.14.0-buster-slim
+
+WORKDIR /opt
+
+COPY cict-server-public /opt/
+
+RUN useradd cict && \
+    npm install
+
+EXPOSE 3000
+
+USER cict
+
+CMD ["node", "server.js"]
