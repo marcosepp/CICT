@@ -1,4 +1,4 @@
-FROM node:15.14.0-buster-slim as build
+FROM node:16.1.0-buster-slim as build
 
 WORKDIR /opt
 
@@ -6,15 +6,14 @@ ENV PATH /opt/node_modules/.bin:$PATH
 
 COPY cict-client-public/package.json /opt/package.json
 
-RUN npm install --silent && \
-    npm install @vue/cli -g
+RUN npm install --silent
 
 COPY cict-client-public /opt
 
 RUN npm run build
 
 
-FROM nginx:1.19.10-alpine
+FROM nginx:1.20.0-alpine
 
 RUN rm -rf /usr/share/nginx/html/*
 

@@ -1,11 +1,11 @@
-FROM node:15.14.0-buster-slim
+FROM node:16.1.0-buster-slim
 
 WORKDIR /opt
 
 COPY cict-client-public ./
 
 RUN useradd cict && \
-    npm install
+    npm install --silent
 
 EXPOSE 8080
 
