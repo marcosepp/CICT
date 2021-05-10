@@ -35,13 +35,13 @@ jobs:
       - name: Build and push server
         uses: docker/build-push-action@v2
         with:
-          context: backend/cict-server-public
+          context: backend
           push: true
           tags: marcosepp/cict-server:latest
       
       - name: Build and push client
         uses: docker/build-push-action@v2
         with:
-          context: frontend/cict-client-public
+          context: frontend
           push: true
           tags: marcosepp/cict-client:latest
