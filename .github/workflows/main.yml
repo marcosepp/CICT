@@ -39,6 +39,7 @@ jobs:
         with:
           context: backend
           push: true
+          file: backend/Dockerfile.server
           tags: marcosepp/cict-server:latest
       
       - name: Build and push client
@@ -46,4 +47,5 @@ jobs:
         with:
           context: frontend
           push: true
+          file: frontend/Dockerfile.client
           tags: marcosepp/cict-client:latest
