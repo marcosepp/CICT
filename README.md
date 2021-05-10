@@ -12,6 +12,45 @@ To clone this repository use git clone --submodules command:
 git clone --recurse-submodules https://github.com/marcosepp/CICT.git
 ```
 
+# Use
+
+### DockerHub containers
+
+Steps:
+
+1. Clone repository
+> `$ git clone https://github.com/marcosepp/CICT.git`
+2. Run Docker compose
+>```
+> $ cd CICT/
+> $ docker-compose up
+>```
+
+### Build your own
+
+Steps:
+
+1. Clone repository
+> `$ git clone --recurse-submodules https://github.com/marcosepp/CICT.git`
+2. Run Docker compose
+>```
+> $ cd CICT/
+> $ docker-compose -f docker-compose-build.yml up 
+>```
+
+### Development
+
+Steps:
+
+1. Clone repository
+> `$ git clone --recurse-submodules https://github.com/marcosepp/CICT.git`
+2. Run Docker compose
+>```
+> $ cd CICT/
+> $ docker-compose -f docker-compose-dev.yml up 
+>```
+
+
 # Author
 
 Marco Sepp
