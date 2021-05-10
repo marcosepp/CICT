@@ -41,6 +41,13 @@ jobs:
           push: true
           file: backend/Dockerfile.server
           tags: marcosepp/cict-server:latest
+          
+      - name: Update marcosepp/cict-server description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: marcosepp/cict-server
       
       - name: Build and push client
         uses: docker/build-push-action@v2
@@ -49,3 +56,10 @@ jobs:
           push: true
           file: frontend/Dockerfile.client
           tags: marcosepp/cict-client:latest
+          
+      - name: Update marcosepp/cict-client description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: marcosepp/cict-client
